@@ -19,7 +19,7 @@ This mods allows you to replace sounds in the game by matching the filenames.
     ├── UnityPlayer.dll
     └── winhttp.dll
     ```
-2. Download [this mod](https://github.com/SherkeyXD/MiSide-Sounds-Loader/releases/download/latest/MiSideSoundsLoader.dll) and extract it to `BepInEx/plugins`
+2. Go to [Release](https://github.com/SherkeyXD/MiSide-Sounds-Loader/releases/latest), download `MiSideSoundsLoader.dll` and place it under `BepInEx/plugins`.
 3. Create a new folder named `CustomSounds` under `BepInEx/plugins`, or run the game once to let the mod create it automatically.
 4. Place the files under `CustomSounds` folder
 
