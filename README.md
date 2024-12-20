@@ -2,7 +2,6 @@
 
 This mods allows you to replace sounds in the game by matching the filenames.
 
-
 ## Installation & Usage
 
 1. Download [BepInEx 6](https://github.com/BepInEx/BepInEx/releases/download/v6.0.0-pre.2/BepInEx-Unity.IL2CPP-win-x64-6.0.0-pre.2.zip) and extract it to game folder. When finished it should be like this:
@@ -27,7 +26,13 @@ This mods allows you to replace sounds in the game by matching the filenames.
 
 ## FAQ
 
-WIP
+### How do I get the name of a sound?
+
+Use tools like [UnityExplorer](https://github.com/yukieiji/UnityExplorer) and [AssetRipper](https://github.com/AssetRipper/AssetRipper) to track the audio used in the game, and take its filename.
+
+### 有没有中文介绍
+
+没有，因为懒得写
 
 ## Thanks
 
