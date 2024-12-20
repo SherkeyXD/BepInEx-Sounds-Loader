@@ -5,6 +5,9 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <GenerateRuntimeConfigurationFiles>false</GenerateRuntimeConfigurationFiles>
+    <DebugType>none</DebugType>
     <RestoreAdditionalProjectSources>
       https://api.nuget.org/v3/index.json;
       https://nuget.bepinex.dev/v3/index.json;
@@ -16,29 +19,37 @@
   <ItemGroup>
     <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.*" IncludeAssets="compile" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+    <PackageReference Include="HarmonyX" Version="2.13.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="UnityEngine">
-      <HintPath>E:\SteamLibrary\steamapps\common\MiSide\BepInEx\interop\UnityEngine.dll</HintPath><GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+      <HintPath>E:\SteamLibrary\steamapps\common\MiSide\BepInEx\interop\UnityEngine.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.AudioModule">
       <HintPath>E:\SteamLibrary\steamapps\common\MiSide\BepInEx\interop\UnityEngine.AudioModule.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>E:\SteamLibrary\steamapps\common\MiSide\BepInEx\interop\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestModule">
       <HintPath>E:\SteamLibrary\steamapps\common\MiSide\BepInEx\interop\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestAudioModule">
       <HintPath>E:\SteamLibrary\steamapps\common\MiSide\BepInEx\interop\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="Il2CppSystem">
       <HintPath>E:\SteamLibrary\steamapps\common\MiSide\BepInEx\interop\Il2CppSystem.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="Il2Cppmscorlib">
       <HintPath>E:\SteamLibrary\steamapps\common\MiSide\BepInEx\interop\Il2Cppmscorlib.dll</HintPath>
+      <Private>false</Private>
     </Reference>
   </ItemGroup>
 
