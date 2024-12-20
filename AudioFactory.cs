@@ -22,7 +22,7 @@ public class AudioFactory
         }
     }
 
-    private Dictionary<string, AudioClip> replacedClips = [];
+    private Dictionary<string, string> replacedClips = [];
 
     public void LoadAllClips(string folderPath)
     {
@@ -37,17 +37,14 @@ public class AudioFactory
     {
         string name = Path.GetFileNameWithoutExtension(filepath);
         string format = Path.GetExtension(filepath).Substring(1);
-        Plugin.Log.LogInfo($"Loading clip: {name}.{format}");
-        AudioClip clip = LoadClip(filepath, format.ToLower());
-        if (clip != null)
-        {
-            Plugin.Log.LogInfo("Successfully loaded.");
-            replacedClips[name] = clip;
-        }
+        replacedClips[name] = filepath;
+        Plugin.Log.LogInfo($"Ready to replace clip: {name}.{format}");
     }
 
-    public AudioClip LoadClip(string path, string format)
+    public AudioClip LoadClip(string filepath)
     {
+        string name = Path.GetFileNameWithoutExtension(filepath);
+        string format = Path.GetExtension(filepath).Substring(1).ToLower();
         AudioType type = AudioType.UNKNOWN;
         switch (format)
         {
@@ -70,7 +67,7 @@ public class AudioFactory
                 break;
         }
 
-        UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(path, type);
+        UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(filepath, type);
         try
         {
             www.SendWebRequest();
@@ -79,7 +76,9 @@ public class AudioFactory
 
             if (www.result == UnityWebRequest.Result.Success)
             {
-                return DownloadHandlerAudioClip.GetContent(www);
+                AudioClip clip = DownloadHandlerAudioClip.GetContent(www);
+                clip.name = name;
+                return clip;
             }
             else
             {
@@ -102,15 +101,12 @@ public class AudioFactory
 
     public AudioClip GetClip(string name)
     {
-        if (replacedClips.TryGetValue(name, out AudioClip clip))
+        if (replacedClips.TryGetValue(name, out string filepath))
         {
+            AudioClip clip = LoadClip(filepath);
             if (clip != null)
             {
                 return clip;
-            }
-            else
-            {
-                Plugin.Log.LogWarning($"Clip \"{name}\" is null.");
             }
         }
         return null;
