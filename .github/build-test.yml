@@ -1,0 +1,21 @@
+name: Build Test
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - name: Setup Dotnet
+        uses: actions/setup-dotnet@v4
+
+      - name: Build
+        run: dotnet build

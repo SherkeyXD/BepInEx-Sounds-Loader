@@ -1,0 +1,54 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag"
+        required: true
+        default: "v0.0.0"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "release"
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - name: Taggify Version
+        id: taggify
+        run: |
+          if [ "${{ github.event_name }}" == "push" ]; then
+            echo "Tag from push event: ${{ github.ref }}"
+            echo "::set-output name=tag::${{ github.ref }}"
+          else
+            echo "Tag from workflow_dispatch input: ${{ github.event.inputs.tag }}"
+            echo "::set-output name=tag::${{ github.event.inputs.tag }}"
+          fi
+
+      - name: Setup Dotnet
+        uses: actions/setup-dotnet@v4
+
+      - name: Build
+        run: dotnet build -c Release
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            bin/Release/net6.0/MiSideSoundsLoader.dll
+          body: "Download `MiSideSoundsLoader.dll` and place it under `BepInEx/plugins`."
+          tag_name: ${{ steps.taggify.outputs.tag }}
