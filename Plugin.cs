@@ -17,15 +17,16 @@ public class Plugin : BasePlugin
         Log = base.Log;
         Log.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
 
-        string soundsPath = GetPluginSoundsPath();
-        Log.LogInfo($"Sounds path: \"{soundsPath}\"");
-        if (!Directory.Exists(soundsPath))
+        string SoundsPath = GetPluginSoundsPath();
+        Log.LogInfo($"Sounds path: \"{SoundsPath}\"");
+
+        if (!Directory.Exists(SoundsPath))
         {
             Log.LogInfo($"Path does not exist, creating...");
-            Directory.CreateDirectory(soundsPath);
+            Directory.CreateDirectory(SoundsPath);
         }
 
-        AudioFactory.Instance.InitializeClips(soundsPath);
+        AudioFactory.Instance.InitializeClips(SoundsPath);
 
         Harmony.CreateAndPatchAll(typeof(AudioSourcePatch));
     }
@@ -67,13 +68,8 @@ public class Plugin : BasePlugin
         }
     }
 
-    public static string GetPluginPath()
-    {
-        return Paths.PluginPath;
-    }
-
     public static string GetPluginSoundsPath()
     {
-        return Path.Combine(GetPluginPath(), "CustomSounds");
+        return Path.Combine(Paths.PluginPath, "CustomSounds");
     }
 }
