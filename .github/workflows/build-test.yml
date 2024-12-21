@@ -6,12 +6,12 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           show-progress: false
 
       - name: Setup Dotnet
@@ -19,3 +19,10 @@ jobs:
 
       - name: Build
         run: dotnet build
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-test
+          path: |
+            bin/Debug/net6.0/SherkeyXD.MiSideSoundsLoader.dll

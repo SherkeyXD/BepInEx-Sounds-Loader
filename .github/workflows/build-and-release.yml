@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Tag"
+        description: "Tag (e.g., v1.2.3)"
         required: true
         default: "v0.0.0"
 
@@ -16,34 +16,35 @@ permissions:
 
 concurrency:
   group: "release"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           show-progress: false
 
       - name: Taggify Version
         id: taggify
         run: |
-          if [ "${{ github.event_name }}" == "push" ]; then
-            echo "Tag from push event: ${{ github.ref }}"
-            echo "::set-output name=tag::${{ github.ref }}"
-          else
+          if ($env:GITHUB_EVENT_NAME -eq 'push') {
+            $tag = $env:GITHUB_REF -replace 'refs/tags/', ''
+            echo "Tag from push event: $tag"
+            echo "tag=$tag" >> $env:GITHUB_ENV
+          } else {
             echo "Tag from workflow_dispatch input: ${{ github.event.inputs.tag }}"
-            echo "::set-output name=tag::${{ github.event.inputs.tag }}"
-          fi
+            echo "tag=${{ github.event.inputs.tag }}" >> $env:GITHUB_ENV
+          }
 
       - name: Setup Dotnet
         uses: actions/setup-dotnet@v4
 
       - name: Build
-        run: dotnet build -c Release
+        run: dotnet build -c Release -o bin/Release
 
       - name: Release
         uses: softprops/action-gh-release@v2
@@ -51,4 +52,4 @@ jobs:
           files: |
             bin/Release/net6.0/SherkeyXD.MiSideSoundsLoader.dll
           body: "Download `SherkeyXD.MiSideSoundsLoader.dll` and place it under `BepInEx/plugins`."
-          tag_name: ${{ steps.taggify.outputs.tag }}
+          tag_name: ${{ env.tag }}
