@@ -34,6 +34,10 @@ Use tools like [UnityExplorer](https://github.com/yukieiji/UnityExplorer) and [A
 
 没有，因为懒得写
 
+## Note
+
+This repository does not claim ownership of the DLLs located in the `3rdParty` folder, and they are included in the repository solely for the CI builds.
+
 ## Thanks
 
 This mod is based on [bepinex-soundmod](https://github.com/Ol1vver/bepinex-soundmod) and has been adapted to migrate from BepInEx 5 to BepInEx 6. Special thanks to the original author.

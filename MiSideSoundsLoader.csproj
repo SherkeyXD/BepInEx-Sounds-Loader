@@ -24,31 +24,31 @@
 
   <ItemGroup>
     <Reference Include="UnityEngine">
-      <HintPath>E:\SteamLibrary\steamapps\common\MiSide\BepInEx\interop\UnityEngine.dll</HintPath>
+      <HintPath>3rdparty/UnityEngine.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.AudioModule">
-      <HintPath>E:\SteamLibrary\steamapps\common\MiSide\BepInEx\interop\UnityEngine.AudioModule.dll</HintPath>
+      <HintPath>3rdparty/UnityEngine.AudioModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>E:\SteamLibrary\steamapps\common\MiSide\BepInEx\interop\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>3rdparty/UnityEngine.CoreModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestModule">
-      <HintPath>E:\SteamLibrary\steamapps\common\MiSide\BepInEx\interop\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <HintPath>3rdparty/UnityEngine.UnityWebRequestModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestAudioModule">
-      <HintPath>E:\SteamLibrary\steamapps\common\MiSide\BepInEx\interop\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+      <HintPath>3rdparty/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Il2CppSystem">
-      <HintPath>E:\SteamLibrary\steamapps\common\MiSide\BepInEx\interop\Il2CppSystem.dll</HintPath>
+      <HintPath>3rdparty/Il2CppSystem.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Il2Cppmscorlib">
-      <HintPath>E:\SteamLibrary\steamapps\common\MiSide\BepInEx\interop\Il2Cppmscorlib.dll</HintPath>
+      <HintPath>3rdparty/Il2Cppmscorlib.dll</HintPath>
       <Private>false</Private>
     </Reference>
   </ItemGroup>
