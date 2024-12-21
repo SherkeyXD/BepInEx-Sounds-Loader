@@ -87,7 +87,7 @@ public class AudioFactory
         {
             if (clip != null)
             {
-                Object.Destroy(clip);
+                UnityEngine.Object.Destroy(clip);
                 loadedAudioClipCache.Remove(name);
             }
         }
