@@ -50,6 +50,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            bin/Release/net6.0/SherkeyXD.MiSideSoundsLoader.dll
+            bin/Release/SherkeyXD.MiSideSoundsLoader.dll
           body: "Download `SherkeyXD.MiSideSoundsLoader.dll` and place it under `BepInEx/plugins`."
           tag_name: ${{ env.tag }}
