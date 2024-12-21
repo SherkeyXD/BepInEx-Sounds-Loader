@@ -22,22 +22,23 @@ public class AudioFactory
         }
     }
 
-    private Dictionary<string, string> replacedClips = [];
+    private Dictionary<string, string> clipNameToPathDict = [];
+    private Dictionary<string, AudioClip> loadedAudioClipCache = [];
 
-    public void LoadAllClips(string folderPath)
+    public void InitializeClips(string folderPath)
     {
         string[] files = Directory.GetFiles(folderPath);
         foreach (string file in files)
         {
-            AddClip(file);
+            AddClipPath(file);
         }
     }
 
-    public void AddClip(string filepath)
+    public void AddClipPath(string filepath)
     {
         string name = Path.GetFileNameWithoutExtension(filepath);
         string format = Path.GetExtension(filepath).Substring(1);
-        replacedClips[name] = filepath;
+        clipNameToPathDict[name] = filepath;
         Plugin.Log.LogInfo($"Ready to replace clip: {name}.{format}");
     }
 
@@ -101,12 +102,19 @@ public class AudioFactory
 
     public AudioClip GetClip(string name)
     {
-        if (replacedClips.TryGetValue(name, out string filepath))
+        if (loadedAudioClipCache.TryGetValue(name, out AudioClip clip))
         {
-            AudioClip clip = LoadClip(filepath);
             if (clip != null)
-            {
                 return clip;
+        }
+
+        if (clipNameToPathDict.TryGetValue(name, out string filepath))
+        {
+            AudioClip NewClip = LoadClip(filepath);
+            if (NewClip != null)
+            {
+                loadedAudioClipCache[name] = NewClip;
+                return NewClip;
             }
         }
         return null;
@@ -114,7 +122,7 @@ public class AudioFactory
 
     public void CheckClips()
     {
-        foreach (var pair in replacedClips)
+        foreach (var pair in clipNameToPathDict)
         {
             if (pair.Value == null)
             {
@@ -125,6 +133,6 @@ public class AudioFactory
 
     public List<string> GetAllClipNames()
     {
-        return new List<string>(replacedClips.Keys);
+        return new List<string>(clipNameToPathDict.Keys);
     }
 }

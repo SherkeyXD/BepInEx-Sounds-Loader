@@ -31,7 +31,7 @@ public class Plugin : BasePlugin
             Directory.CreateDirectory(soundsPath);
         }
 
-        AudioFactory.Instance.LoadAllClips(soundsPath);
+        AudioFactory.Instance.InitializeClips(soundsPath);
 
         Harmony.CreateAndPatchAll(typeof(AudioSourcePatch));
     }
