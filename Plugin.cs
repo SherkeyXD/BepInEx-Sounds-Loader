@@ -66,7 +66,7 @@ public class Plugin : BasePlugin
             AudioClip newClip = AudioFactory.Instance.GetClip(source.clip.name);
             if (newClip != null)
             {
-                Log.LogWarning($"Replacing clip \"{source.clip.name}\" with \"{newClip.name}\"");
+                Log.LogInfo($"Replacing clip \"{source.clip.name}\"");
                 source.clip = newClip;
                 return;
             }
