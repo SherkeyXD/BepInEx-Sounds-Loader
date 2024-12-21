@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>SherkeyXD.MiSideSoundsLoader</AssemblyName>
     <Product>MiSideSoundsLoader</Product>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <TargetFramework>net6.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
