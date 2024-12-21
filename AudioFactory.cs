@@ -45,28 +45,9 @@ public class AudioFactory
     public AudioClip LoadClip(string filepath)
     {
         string name = Path.GetFileNameWithoutExtension(filepath);
-        string format = Path.GetExtension(filepath).Substring(1).ToLower();
-        AudioType type = AudioType.UNKNOWN;
-        switch (format)
-        {
-            case "ogg":
-                type = AudioType.OGGVORBIS;
-                break;
-            case "wav":
-                type = AudioType.WAV;
-                break;
-            case "aif":
-            case "aiff":
-                type = AudioType.AIFF;
-                break;
-            case "acc":
-                type = AudioType.ACC;
-                break;
-            case "mp2":
-            case "mp3":
-                type = AudioType.MPEG;
-                break;
-        }
+        AudioType type = GetAudioTypeFromExtension(
+            Path.GetExtension(filepath).Substring(1).ToLower()
+        );
 
         UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(filepath, type);
         try
@@ -100,6 +81,39 @@ public class AudioFactory
         return null;
     }
 
+    public void UnloadClip(string name)
+    {
+        if (loadedAudioClipCache.TryGetValue(name, out AudioClip clip))
+        {
+            if (clip != null)
+            {
+                Object.Destroy(clip);
+                loadedAudioClipCache.Remove(name);
+            }
+        }
+    }
+
+    private AudioType GetAudioTypeFromExtension(string format)
+    {
+        switch (format)
+        {
+            case "ogg":
+                return AudioType.OGGVORBIS;
+            case "wav":
+                return AudioType.WAV;
+            case "aif":
+            case "aiff":
+                return AudioType.AIFF;
+            case "acc":
+                return AudioType.ACC;
+            case "mp2":
+            case "mp3":
+                return AudioType.MPEG;
+            default:
+                return AudioType.UNKNOWN;
+        }
+    }
+
     public AudioClip GetClip(string name)
     {
         if (loadedAudioClipCache.TryGetValue(name, out AudioClip clip))
@@ -115,6 +129,11 @@ public class AudioFactory
             {
                 loadedAudioClipCache[name] = NewClip;
                 return NewClip;
+            }
+            else
+            {
+                loadedAudioClipCache[name] = null;
+                Plugin.Log.LogWarning($"Failed to load clip: {name}, adding to ignore list.");
             }
         }
         return null;
