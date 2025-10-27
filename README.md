@@ -4,22 +4,8 @@ This mods allows you to replace sounds in the game by matching the filenames.
 
 ## Installation & Usage
 
-1. Download [BepInEx 6](https://github.com/BepInEx/BepInEx/releases/download/v6.0.0-pre.2/BepInEx-Unity.IL2CPP-win-x64-6.0.0-pre.2.zip) and extract it to game folder. When finished it should be like this:
-    ```
-    MiSide
-    ├── baselib.dll
-    ├── BepInEx
-    │   ├── cache
-    │   ├── ...
-    │   ├── plugins
-    │   └── unity-libs
-    ├── ...
-    ├── MiSideFull.exe
-    ├── UnityCrashHandler64.exe
-    ├── UnityPlayer.dll
-    └── winhttp.dll
-    ```
-2. Go to [Release](https://github.com/SherkeyXD/MiSide-Sounds-Loader/releases/latest), download `SherkeyXD.BepInEx-Sounds-Loader.dll` and place it under `BepInEx/plugins`.
+1. Download [BepInEx 6](https://github.com/BepInEx/BepInEx/releases/download/v6.0.0-pre.2/BepInEx-Unity.IL2CPP-win-x64-6.0.0-pre.2.zip) and extract it to game folder. Then run the game once to setup BepInEx
+2. Go to [Release](https://github.com/SherkeyXD/BepInEx-Sounds-Loader/releases/latest), download `SherkeyXD.BepInEx-Sounds-Loader.dll` and place it under `BepInEx/plugins`.
 3. Create a new folder named `CustomSounds` under `BepInEx/plugins`, or run the game once to let the mod create it automatically.
 4. Place the files under `CustomSounds` folder
 
@@ -29,10 +15,6 @@ This mods allows you to replace sounds in the game by matching the filenames.
 ### How do I get the name of a sound?
 
 Use tools like [UnityExplorer](https://github.com/yukieiji/UnityExplorer) and [AssetRipper](https://github.com/AssetRipper/AssetRipper) to track the audio used in the game, and take its filename.
-
-### 有没有中文介绍
-
-没有，因为懒得写
 
 ## Note
 
