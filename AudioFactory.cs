@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace MiSideSoundsLoader;
+namespace BepInEx_Sounds_Loader;
 
 public class AudioFactory
 {

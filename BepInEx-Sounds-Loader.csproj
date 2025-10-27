@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <AssemblyName>SherkeyXD.MiSideSoundsLoader</AssemblyName>
-    <Product>MiSideSoundsLoader</Product>
+    <AssemblyName>SherkeyXD.BepInEx-Sounds-Loader</AssemblyName>
+    <Product>BepInEx-Sounds-Loader</Product>
     <Version>1.0.4</Version>
     <TargetFramework>net6.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -15,7 +15,7 @@
       https://nuget.bepinex.dev/v3/index.json;
       https://nuget.samboy.dev/v3/index.json
     </RestoreAdditionalProjectSources>
-    <RootNamespace>MiSideSoundsLoader</RootNamespace>
+    <RootNamespace>BepInEx_Sounds_Loader</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
