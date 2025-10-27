@@ -1,4 +1,4 @@
-# MiSide Sounds Loader
+# BepInEx Sounds Loader
 
 This mods allows you to replace sounds in the game by matching the filenames.
 
