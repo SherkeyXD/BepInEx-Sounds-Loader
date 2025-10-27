@@ -13,13 +13,13 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 1
           show-progress: false
 
       - name: Setup Dotnet
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
 
       - name: Build Debug Version
         run: dotnet build -c Debug -o bin/Debug
@@ -28,7 +28,7 @@ jobs:
         run: dotnet build -c Release -o bin/Release
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: build-test
           path: bin
